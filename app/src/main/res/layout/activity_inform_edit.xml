@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/editAddress"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="위치"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="주소를 입력해주세요"
+></EditText>
+    <TextView
+        android:id="@+id/editHour"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="시간"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="영업시간을 입력해주세요"
+        ></EditText>
+    <TextView
+        android:id="@+id/editInsta"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="SNS"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="SNS 주소를 입력해주세요"
+        ></EditText>
+    <TextView
+        android:id="@+id/editPhone"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="전화번호"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="전화번호를 입력해주세요"
+        ></EditText>
+    <TextView
+        android:id="@+id/editInform"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="위치"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="기타 정보를 입력해주세요"
+        ></EditText>
+
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="저장"
+    android:layout_gravity="right|bottom"></Button>
+
+</LinearLayout>
