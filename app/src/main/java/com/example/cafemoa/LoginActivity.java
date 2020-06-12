@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
     private String mJsonString;
     private   AlertDialog dialog;
 
-    String loginSort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

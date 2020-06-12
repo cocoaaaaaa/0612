@@ -5,9 +5,21 @@
     android:background="#FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <TextView
-        android:id="@+id/editAddress"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:text="카페명"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="카페의 명칭을 입력해주세요"
+        ></EditText>
+    <TextView
         android:layout_width="87dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -16,12 +28,12 @@
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
     <EditText
+        android:id="@+id/editAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="주소를 입력해주세요"
-></EditText>
+        ></EditText>
     <TextView
-        android:id="@+id/editHour"
         android:layout_width="87dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -30,12 +42,12 @@
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
     <EditText
+        android:id="@+id/editHour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="영업시간을 입력해주세요"
         ></EditText>
     <TextView
-        android:id="@+id/editInsta"
         android:layout_width="87dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -44,13 +56,14 @@
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
     <EditText
+        android:id="@+id/editInsta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="SNS 주소를 입력해주세요"
         ></EditText>
+
     <TextView
-        android:id="@+id/editPhone"
-        android:layout_width="87dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:padding="5dp"
@@ -58,29 +71,37 @@
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
     <EditText
+        android:id="@+id/editPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="전화번호를 입력해주세요"
         ></EditText>
+
     <TextView
-        android:id="@+id/editInform"
-        android:layout_width="87dp"
+        android:layout_width="133dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:padding="5dp"
-        android:text="위치"
+        android:text="기타 정보"
         android:textSize="20dp"
         android:textStyle="bold"></TextView>
     <EditText
+        android:id="@+id/editInform"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="기타 정보를 입력해주세요"
         ></EditText>
 
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="저장"
-    android:layout_gravity="right|bottom"></Button>
+    <Button
+        android:id="@+id/editSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="저장"
+        android:layout_gravity="right|bottom"></Button>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/textView_result" />
 
+    >
 </LinearLayout>

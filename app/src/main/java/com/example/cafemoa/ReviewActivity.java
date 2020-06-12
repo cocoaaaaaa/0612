@@ -5,28 +5,38 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
 
+import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
+import java.sql.Blob;
 
 //리뷰작성
 
@@ -38,6 +48,8 @@ public class ReviewActivity extends AppCompatActivity {
     EditText mEditTextreview, mEditTexttitle;
     TextView mTextViewResult;
     private   AlertDialog dialog;
+    String temp="";
+
 
 
     private final int GET_GALLERY_IMAGE = 200;
@@ -77,6 +89,7 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(Intent.ACTION_PICK);
+                //intent.setType("image/*");
                 intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
             }
@@ -103,7 +116,7 @@ public class ReviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ReviewActivity.InsertData task = new InsertData();
-                task.execute("http://" + IP_ADDRESS + "/ReviewUpload.php", name, Float.toString(rate), loginID, mEditTexttitle.getText().toString(), mEditTextreview.getText().toString());
+                task.execute("http://" + IP_ADDRESS + "/ImageUpload.php", name, Float.toString(rate), loginID, mEditTexttitle.getText().toString(), mEditTextreview.getText().toString(), temp);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(ReviewActivity.this);
                 dialog = builder.setMessage("리뷰작성이 완료되었습니다.")
@@ -153,10 +166,11 @@ public class ReviewActivity extends AppCompatActivity {
             String userID = (String)params[3];
             String title = (String)params[4];
             String review = (String)params[5];
+            String image = (String)params[6];
 
 
             String serverURL = (String)params[0];
-            String postParameters = "name=" + name + "&rate=" + rate + "&userID=" + userID + "&title=" + title + "&review=" + review;
+            String postParameters = "name=" + name + "&rate=" + rate + "&userID=" + userID + "&title=" + title + "&review=" + review + "&image=" + image;
 
 
             try {
@@ -227,7 +241,28 @@ public class ReviewActivity extends AppCompatActivity {
             Uri selectedImageUri = data.getData();
             reviewImageview.setImageURI(selectedImageUri);
 
+            Bitmap selPhoto = null;
+            try {
+                selPhoto = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            BitMapToString(selPhoto);
         }
 
     }
+    public void BitMapToString(Bitmap bitmap){
+        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);    //bitmap compress
+        byte [] arr=baos.toByteArray();
+        String image= Base64.encodeToString(arr, Base64.DEFAULT);
+
+        try{
+            temp=URLEncoder.encode(image,"utf-8");
+        }catch (Exception e){
+            Log.e("exception",e.toString());
+        }
+    }
+
 }
+

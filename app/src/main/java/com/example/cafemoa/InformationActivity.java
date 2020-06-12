@@ -121,7 +121,8 @@ public void onClick(View v) {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent( InformationActivity.this, InformEditActivity.class );
-
+                intent.putExtra("loginID", loginID);
+                intent.putExtra("loginSort", loginSort);
                 startActivity(intent);
             }
         });
